@@ -43,7 +43,6 @@ def tokenize_command_string(input_stream, environment):
     tokens = []
 
     current_token = 0
-    current_token_value = ""
 
     while current_token < len(input_stream) - 1:
         if input_stream[current_token] == "\"":
@@ -72,3 +71,13 @@ def tokenize_command_string(input_stream, environment):
             tokens.append(token)
 
     return tokens
+
+
+def update_environment(tokens, environment):
+    token_id = 0
+    while token_id < len(tokens) - 1:
+        if tokens[token_id] == "=":
+            name = tokens[token_id - 1]
+            value = tokens[token_id + 1]
+            environment[name] = value
+        token_id += 1

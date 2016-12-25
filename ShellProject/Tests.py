@@ -1,6 +1,7 @@
 import unittest
 from Tokenizer import *
 from CommandSeparator import *
+from Commands import  *
 
 
 class TokenizerTests(unittest.TestCase):
@@ -35,9 +36,10 @@ class SeparatorTests(unittest.TestCase):
 
     def test_separation_by_pipe(self):
         self.environment = {'FILE': 'example.txt', 'name': 'Peter', 'FILE2': 'input.in'}
-        self.input_stream = "echo \"Hello, $name\"|date   =    1703|wc"
+        self.input_stream = "FILE='resources/example.txt' | cat $FILE"
 
         self.tokens = tokenize_command_string(self.input_stream, self.environment)
         self.commands = [['echo', 'Hello, Peter'], ['assign', 'date', '1703'], ['wc']]
 
         self.assertEqual(separate_by_pipe(self.tokens), self.commands)
+
