@@ -1,6 +1,7 @@
-from Commands import *
+from ShellProject.Commands import *
 
-#Create list of arguments for the command given as parameter
+
+# Create list of arguments for the command given as parameter
 def create_args_list(command):
     args = []
     for i in range(1, len(command)):
@@ -8,7 +9,8 @@ def create_args_list(command):
 
     return args
 
-#Execute commands from commands list
+
+# Execute commands from commands list
 def execute(program_state, commands):
     for command in commands:
         args = create_args_list(command)

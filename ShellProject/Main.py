@@ -1,6 +1,6 @@
-from Tokenizer import *
-from CommandSeparator import *
-from CommandExecutor import *
+from ShellProject.Tokenizer import *
+from ShellProject.CommandSeparator import *
+from ShellProject.CommandExecutor import *
 
 
 # This class includes all necessary information about our program's state at the current moment
@@ -9,6 +9,7 @@ class ProgramState:
     input_stream = ""
     output_stream = ""
     is_program_running = True
+
 
 # It is a main cycle, in which we get command string and then parse commands and execute them
 while ProgramState.is_program_running:

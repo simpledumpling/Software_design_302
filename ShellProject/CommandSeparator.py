@@ -1,5 +1,3 @@
-
-
 # Gets as input list of tokens and create list of commands with their parameters that we'll use in CommandExecutor
 def separate_by_pipe(tokens):
     commands = []

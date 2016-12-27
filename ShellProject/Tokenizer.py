@@ -44,7 +44,7 @@ def tokenize_command_string(input_stream, environment):
 
     current_token = 0
 
-    while current_token < len(input_stream) - 1:
+    while current_token < len(input_stream):
         if input_stream[current_token] == "\"":
             input_for_quotes_match = input_stream[current_token + 1:]
             token = match(r'[^"]*', input_for_quotes_match)

@@ -1,11 +1,10 @@
 import unittest
-from Tokenizer import *
-from CommandSeparator import *
-from Commands import  *
+from ShellProject.Tokenizer import *
+from ShellProject.CommandSeparator import *
+from ShellProject.Commands import *
 
 
 class TokenizerTests(unittest.TestCase):
-
     def test_substitution(self):
         self.environment = {'FILE': 'example.txt', 'name': 'Peter', 'FILE2': 'input.in'}
 
@@ -27,13 +26,16 @@ class TokenizerTests(unittest.TestCase):
         self.input_stream3 = "echo \"Hello, $name\"|date=1703|wc"
         self.tokens3 = ['echo', 'Hello, Peter', '|', 'date', '=', '1703', '|', 'wc']
 
+        self.input_stream4 = "echo 1"
+        self.tokens4 = ['echo', '1']
+
         self.assertEqual(tokenize_command_string(self.input_stream1, self.environment), self.tokens1)
         self.assertEqual(tokenize_command_string(self.input_stream2, self.environment), self.tokens2)
         self.assertEqual(tokenize_command_string(self.input_stream3, self.environment), self.tokens3)
+        self.assertEqual(tokenize_command_string(self.input_stream4, self.environment), self.tokens4)
 
 
 class SeparatorTests(unittest.TestCase):
-
     def test_separation_by_pipe(self):
         self.environment = {'FILE': 'example.txt', 'name': 'Peter', 'FILE2': 'input.in'}
         self.input_stream = "FILE='resources/example.txt' | cat $FILE"
@@ -42,4 +44,3 @@ class SeparatorTests(unittest.TestCase):
         self.commands = [['echo', 'Hello, Peter'], ['assign', 'date', '1703'], ['wc']]
 
         self.assertEqual(separate_by_pipe(self.tokens), self.commands)
-
