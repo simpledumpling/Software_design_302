@@ -24,4 +24,6 @@ def execute(program_state, commands):
             pwd_command(program_state, args)
         elif command[0] == "exit":
             exit_command(program_state, args)
+        elif command[0] == "grep":
+            grep_command(program_state, args)
         pipe_command(program_state, [])
