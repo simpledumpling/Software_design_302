@@ -132,4 +132,3 @@ def grep_command(program_state, args):
                         program_state.output_stream += "\n" + lines[line + next_line]
 
     program_state.input_stream = ""
-
