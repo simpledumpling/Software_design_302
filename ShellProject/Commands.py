@@ -100,8 +100,6 @@ class Commands:
             parser.add_argument('file', action='store', nargs='*')
 
             args = parser.parse_args(args)
-            if args is None:
-                print("Grep: the following arguments are required: pattern, file.")
             program_state.output_stream = ""
 
             # If we haven't files as parameters, we should search in current input_stream
@@ -141,4 +139,4 @@ class Commands:
 
             program_state.input_stream = ""
         else:
-            print("Grep: the following arguments are required: pattern, file(optional).")
+            program_state.output_stream = "Grep: the following arguments are required: pattern, file(optional)."
