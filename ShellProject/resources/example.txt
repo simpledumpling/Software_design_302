@@ -1,1 +1,10 @@
 Hello, world! This is test file for cat_command.
+And now it's also test file for grep command
+We need more lines!
+More!
+To test -A flag
+
+run, Peter, run!
+runtime error
+Run
+Running
