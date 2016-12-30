@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "StarChatProto";
+option objc_class_prefix = "SCP";
+
+// The sending messages and notifications service definition.
+service StarChat {
+    // Sends a message
+    rpc SendMessages (stream Message) returns (stream Message) {
+    }
+    rpc SendNotification (stream Notification) returns (stream Notification) {
+    }
+}
+
+// The request message containing the user's name and message content.
+message Message {
+    string name = 1;
+    string content = 2;
+}
+
+// The response message containing the notifications
+message Notification {
+    string message = 1;
+}
