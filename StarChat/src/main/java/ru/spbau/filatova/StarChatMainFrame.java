@@ -1,9 +1,9 @@
+package ru.spbau.filatova;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
 public class StarChatMainFrame implements MsgGetter {
     private JFrame mainChatFrame;

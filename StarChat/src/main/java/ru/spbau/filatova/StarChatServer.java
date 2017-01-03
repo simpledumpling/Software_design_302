@@ -1,3 +1,5 @@
+package ru.spbau.filatova;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,14 +9,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //Class for server
-class StarChatServer {
-    //Chat log's variable for the StarChatServer class
+public class StarChatServer {
+    //Chat log's variable for the ru.spbau.filatova.StarChatServer class
     private Logger chatLog = Logger.getLogger(StarChatServer.class.getName());
 
     //Boolean is_run variable for indicating is our chat alive or we end discussion
-    private boolean is_run = false;
+    private boolean isRun = false;
 
-    //Server socket for our StarChatServer
+    //Server socket for our ru.spbau.filatova.StarChatServer
     private ServerSocket mainServer;
 
     //Two global variables for UI and port, will be initialized in constructor
@@ -40,7 +42,7 @@ class StarChatServer {
     //Run function starts server work
     public void run() {
         new Thread(() -> {
-            is_run = false;
+            isRun = false;
 
             //Try to create server socket. If we get an exception - write about it to the chatLog
             try {
@@ -50,10 +52,10 @@ class StarChatServer {
             }
 
             //Try to create a connection with a client. If we get an exception - write about it to the chatLog
-            while (!is_run) {
+            while (!isRun) {
                 try {
                     client = mainServer.accept();
-                    is_run = true;
+                    isRun = true;
                     //If we accept successfully - write about it to the log
                     chatLog.log(Level.SEVERE, LogStrings.successfulConnection);
                 } catch (IOException e) {

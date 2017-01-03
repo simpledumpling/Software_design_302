@@ -1,3 +1,5 @@
+package ru.spbau.filatova;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,7 +1,11 @@
+package ru.spbau.filatova;
+
 import java.io.IOException;
 
-//This class is a controller, connecting UI with client and server
-//To start chat run main() function in this file
+/**
+ * This class is a controller, connecting UI with client and server
+ * To start chat run main() function in this file
+ */
 public class Controller {
     //Controller includes server, client, mainFrame as ui and welcome frame
     private StarChatServer server;

@@ -1,9 +1,13 @@
-//Special class for string constant used in logging
-class LogStrings {
+package ru.spbau.filatova;
+
+/**
+ * Special class for string constant used in logging
+ */
+public class LogStrings {
     static final String acceptError = "StarChatServer getMessage exception. Accept failed: ";
 
     static final String successfulConnection = "StarChatServer. Connected successfully.";
-    static final String serverSocketCreationFailed =  "Server. Server socket creation failed.";
+    static final String serverSocketCreationFailed = "Server. Server socket creation failed.";
 
     static final String unableToConnectToServer = "Client send_message(). Unable to connect to server.";
     static final String unableToConnectToClient = "Server send_message(). Unable to connect to client.";

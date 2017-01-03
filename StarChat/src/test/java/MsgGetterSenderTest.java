@@ -1,4 +1,8 @@
 import org.junit.Test;
+import ru.spbau.filatova.LogStrings;
+import ru.spbau.filatova.MsgGetter;
+import ru.spbau.filatova.MsgGetterSender;
+import ru.spbau.filatova.StarChatServer;
 
 import java.io.IOException;
 import java.io.PipedInputStream;
@@ -12,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 public class MsgGetterSenderTest {
-    //Chat log's variable for the MsgGetterSender class
+    //Chat log's variable for the ru.spbau.filatova.MsgGetterSender class
     private Logger chatLog = Logger.getLogger(StarChatServer.class.getName());
 
     @Test
@@ -26,20 +30,20 @@ public class MsgGetterSenderTest {
             serverOutput = new PipedOutputStream(clientInput);
             clientOutput = new PipedOutputStream(serverInput);
         } catch (IOException e) {
-            chatLog.log(Level.SEVERE, LogStrings.testOutputStreamsError, e);
+            chatLog.log(Level.SEVERE, "MsgGetterSenderTest testGetAndSend. Creating output streams failed.", e);
         }
 
         //Create messages queues for client and server
         List<String> clientMessageQueue = new ArrayList<>();
         List<String> serverMessageQueue = new ArrayList<>();
 
-        //Create MsgGetter for client and server
+        //Create ru.spbau.filatova.MsgGetter for client and server
         // and override getMessage method to add messages to the client's and server's messages queue
         MsgGetter clientMsgGetter = (nickname, message) -> clientMessageQueue.add(nickname + "; " + message);
 
         MsgGetter serverMsgGetter = (nickname, message) -> serverMessageQueue.add(nickname + "; " + message);
 
-        //Create MsgGetterSender for client and server
+        //Create ru.spbau.filatova.MsgGetterSender for client and server
         MsgGetterSender clientMsgGetterSender = new MsgGetterSender(clientInput, clientOutput, clientMsgGetter);
         MsgGetterSender serverMsgGetterSender = new MsgGetterSender(serverInput, serverOutput, serverMsgGetter);
 

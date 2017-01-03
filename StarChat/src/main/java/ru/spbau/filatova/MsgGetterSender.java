@@ -1,7 +1,12 @@
+package ru.spbau.filatova;
+
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Class for getting and sending messages between server and client
+ */
 public class MsgGetterSender {
     //There are two static constants for message byte and exit byte
     private static final int MESSAGE_BYTE = 1;
@@ -13,7 +18,7 @@ public class MsgGetterSender {
     //Chat log's variable for the MsgGetterSender class
     private Logger chatLog = Logger.getLogger(StarChatServer.class.getName());
 
-    private boolean is_run = false;
+    private boolean isRun = false;
 
     public MsgGetterSender(InputStream inputStream, OutputStream outputStream, MsgGetter msgGetter) {
         this.inputStream = new DataInputStream(inputStream);
@@ -21,9 +26,10 @@ public class MsgGetterSender {
         this.msgGetter = msgGetter;
     }
 
+    //Function to run message getter/sender
     public void run() {
-        is_run = true;
-        while (is_run) {
+        isRun = true;
+        while (isRun) {
             try {
                 Integer messageByte = inputStream.readInt();
                 switch (messageByte) {
@@ -33,7 +39,7 @@ public class MsgGetterSender {
                         msgGetter.getMessage(message, nickname);
                         break;
                     default:
-                        is_run = false;
+                        isRun = false;
                         break;
                 }
             } catch (IOException e) {
@@ -42,6 +48,7 @@ public class MsgGetterSender {
         }
     }
 
+    //Function to send message
     public void sendMessage(String message, String nickname) {
         try {
             outputStream.writeInt(MESSAGE_BYTE);

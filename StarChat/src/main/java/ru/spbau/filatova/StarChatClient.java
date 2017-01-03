@@ -1,3 +1,5 @@
+package ru.spbau.filatova;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,8 +12,8 @@ class StarChatClient {
     //Chat log's variable for the StarChatServer class
     private Logger chatLog = Logger.getLogger(StarChatServer.class.getName());
 
-    //Boolean is_run variable for indicating is our chat alive or we end discussion
-    private boolean is_run = false;
+    //Boolean isRun variable for indicating is our chat alive or we end discussion
+    private boolean isRun = false;
 
     //Two global variables for StarChatClient for socket and UI.
 
@@ -43,8 +45,8 @@ class StarChatClient {
             //Try to create Socket with given IP-address and port
             try {
                 server = new Socket(address, serverPort);
-                //If we succeed, set true to is_run variable - it means our client starts his work
-                is_run = true;
+                //If we succeed, set true to isRun variable - it means our client starts his work
+                isRun = true;
 
             } catch (IOException e) {
                 //If we have an exception - write about it to the log
